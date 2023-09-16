@@ -41,6 +41,13 @@ int _printf(const char *format, ...)
 	{
 		if (*format != '%')
 		{
+			chars_printed += print_char(*format);
+		}
+		else
+		{
+			format++;
+			switch (*format)
+			{
 			case 'c':
 			{
 			char c = va_arg(args, int);
@@ -68,6 +75,7 @@ int _printf(const char *format, ...)
 			chars_printed += print_char('%');
 			chars_printed += print_char(*format);
 			break;
+			}
 			}
 		}
 	}
