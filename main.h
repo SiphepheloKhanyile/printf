@@ -6,7 +6,7 @@
 int _printf(const char *format, ...);
 
 /**Helper Functions**/
-int handle_percent();
+int handle_percent(void);
 int handle_char(va_list args);
 int handle_string(va_list args);
 
