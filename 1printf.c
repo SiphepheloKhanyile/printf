@@ -1,72 +1,76 @@
 #include "main.h"
 /**
+  * print_char - Function to print a character
+  * @c: character to be printed
+  * Return: 1
+  */
+static int print_char(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+/**
+  * print_string - function to print a string
+  * @string: string to be printed
+  * Return: length of string
+  */
+static int print_string(const char *string)
+{
+	size_t length = 0;
+
+	while (string[length])
+	{
+		length++;
+	}
+	write(1, string, length);
+	return (length);
+}
+
+/**
   * _printf - function to produce output according to format
   * @format: character string
   * Return: number of characters printed
   */
 int _printf(const char *format, ...)
 {
-	int printed_chars = 0;
+	int chars_printed = 0;
 	va_list args;
 
 	va_start(args, format);
-	if (format == NULL)
-	{
-		return (-1);
-	}
 	while (*format)
 	{
 		if (*format != '%')
 		{
-			/**for normal characters**/
-			putchar(*format);
-			printed_chars++;
-		}
-		else
-		{
-			/**if we encounter format specifier**/
-			format++;
-			switch (*format)
+			case 'c':
 			{
-				case 'c':
-				{
-					char c = va_arg(args, int);
-					putchar(c);
-					printed_chars++;
-					break;
-				}
-				case 's':
-				{
-					const char *string = va_arg(args, const char *);
-					if (string)
-					{
-						while(*string)
-						{
-							putchar(*string);
-							string++;
-							printed_chars++;
-						}
-					}
-					break;
-				}
-				case '%':
-				{
-					putchar('%');
-					printed_chars++;
-					break;
-				}
-				default:
-				{
-					putchar('%');
-					putchar(*format);
-					printed_chars += 2;
-				}
+			char c = va_arg(args, int);
+
+			chars_printed += print_char(c);
+			break;
+			}
+			case 's':
+			{
+			const char *string = va_arg(args, const char *);
+
+			if (string)
+			{
+				chars_printed += print_string(string);
+			}
+			break;
+			}
+			case '%':
+			{
+			chars_printed += print_char('%');
+			break;
+			}
+			default:
+			{
+			chars_printed += print_char('%');
+			chars_printed += print_char(*format);
+			break;
 			}
 		}
-		format++;
-		
 	}
 	va_end(args);
-	return (printed_chars);
+	return (chars_printed);
 }
-
