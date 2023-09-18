@@ -58,6 +58,9 @@ int _printf(const char *format, ...)
 				case 'X':
 					printed_chars += handle_hex_upper(args);
 					break;
+				case 'p':
+					printed_chars += handle_pointer(args);
+					break;
 				default:
 					printed_chars += print_char('%');
 					printed_chars += print_char(*format);

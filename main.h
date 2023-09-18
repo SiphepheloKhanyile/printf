@@ -17,6 +17,7 @@ int handle_unsigned_int(va_list args);
 int handle_octal(va_list args);
 int handle_hex_lower(va_list args);
 int handle_hex_upper(va_list args);
+int handle_pointer(va_list args);
 
 /**Printing Function**/
 int print_char(char c);
