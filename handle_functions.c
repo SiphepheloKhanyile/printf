@@ -41,3 +41,49 @@ int handle_string(va_list args)
 	}
 	return (0);
 }
+
+/**
+  * handle_int - Function to handle 'd' and 'i'
+  * @args: arguments
+  * Return: printed string
+  */
+int handle_int(va_list args)
+{
+	char buffer[20];
+	int i = 0;
+	int is_negative = 0;
+	int num = va_arg(args, int);
+	int len;
+	int j;
+
+	if (num == INT_MIN)
+	{
+		return (print_string("-2147483648"));
+	}
+	/**Handle Negative numbers**/
+	if (num < 0)
+	{
+		is_negative = 1;
+		num = -num;
+	}
+	/**Convert the number to a string in reverse order**/
+	do {
+		buffer[i++] = num % 10 + '0';
+		num /= 10;
+	} while (num > 0);
+	/**Add the negative sign if necessary**/
+	if (is_negative)
+	{
+		buffer[i++] = '-';
+	}
+	/**Reverse String**/
+	len = i;
+	for (j = 0; j < len / 2; j++)
+	{
+		char temp = buffer[j];
+
+		buffer[j] = buffer[len - j - 1];
+		buffer[len - j - 1] = temp;
+	}
+	return (print_string(buffer));
+}
