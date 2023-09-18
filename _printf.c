@@ -38,6 +38,9 @@ int _printf(const char *format, ...)
 				case 'i':
 					printed_chars += handle_int(args);
 					break;
+				case 'b':
+					printed_chars += handle_binary(args);
+					break;
 				default:
 					printed_chars += print_char('%');
 					printed_chars += print_char(*format);

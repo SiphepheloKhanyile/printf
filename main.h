@@ -12,6 +12,7 @@ int handle_percent(void);
 int handle_char(va_list args);
 int handle_string(va_list args);
 int handle_int(va_list args);
+int handle_binary(va_list args);
 
 /**Printing Function**/
 int print_char(char c);
