@@ -1,29 +1,37 @@
 #include "main.h"
 #include <stdbool.h>
 /**
-  * handle_int2 - Updated function to handle i and d
+  * handle_int - 3rd test function to handle i and d
   * @args: arguments
-  * Return: printed args
+  * Return: printed nums
   */
-int handle_int2(va_list args)
+int handle_int3(va_list args)
 {
 	int num = va_arg(args, int);
-	int i, index = 0;
 	char buffer[64];
+	int index = 0;
+	int i;
 
-	if (num == 0)
-	{
-		return (print_char('0'));
-	}
 	if (num < 0)
 	{
 		buffer[index++] = '-';
 		num = -num;
 	}
-	while (num > 0)
+	else
 	{
-		buffer[index++] = (num % 10) + '0';
-		num /= 10;
+		buffer[index++] = '0';
+	}
+	if (num == 0)
+	{
+		buffer[index++] = '0';
+	}
+	else
+	{
+		while (num > 0)
+		{
+			buffer[index++] = (num % 10) + '0';
+			num /= 10;
+		}
 	}
 	for (i = 0; i < index / 2; i++)
 	{
