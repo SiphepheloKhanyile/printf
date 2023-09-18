@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 					break;
 				case 'd':
 				case 'i':
-					printed_chars += handle_int2(args);
+					printed_chars += handle_int(args);
 					break;
 				case 'b':
 					printed_chars += handle_binary(args);
