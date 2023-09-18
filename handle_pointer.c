@@ -9,10 +9,11 @@ int handle_pointer(va_list args)
 {
 	uintptr_t ptr = (uintptr_t)va_arg(args, void *);
 	char buffer[18];
-	int i,len, index = 0;
+	int i, len, index = 0;
 
 	do {
 		int digit = ptr % 16;
+
 		if (digit < 10)
 		{
 			buffer[index++] = digit + '0';
