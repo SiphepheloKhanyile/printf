@@ -24,6 +24,10 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
+			if (*format == '\0')
+			{
+				break;
+			}
 			switch (*format)
 			{
 				case 'c':
@@ -41,6 +45,18 @@ int _printf(const char *format, ...)
 					break;
 				case 'b':
 					printed_chars += handle_binary(args);
+					break;
+				case 'u':
+					printed_chars += handle_unsigned_int(args);
+					break;
+				case 'o':
+					printed_chars += handle_octal(args);
+					break;
+				case 'x':
+					printed_chars += handle_hex_lower(args);
+					break;
+				case 'X':
+					printed_chars += handle_hex_upper(args);
 					break;
 				default:
 					printed_chars += print_char('%');
