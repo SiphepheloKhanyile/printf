@@ -61,6 +61,12 @@ int _printf(const char *format, ...)
 				case 'p':
 					printed_chars += handle_pointer(args);
 					break;
+				case 'S':
+					printed_chars += handle_custom_string(args);
+					break;
+				case 'r':
+					printed_chars += handle_custom_reverse_string(args);
+					break;
 				default:
 					printed_chars += print_char('%');
 					printed_chars += print_char(*format);

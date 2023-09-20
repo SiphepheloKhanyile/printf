@@ -4,6 +4,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <limits.h>
+#include <stdbool.h>
 
 int _printf(const char *format, ...);
 
@@ -18,6 +19,8 @@ int handle_octal(va_list args);
 int handle_hex_lower(va_list args);
 int handle_hex_upper(va_list args);
 int handle_pointer(va_list args);
+int handle_custom_string(va_list args);
+int handle_custom_reverse_string(va_list args);
 
 /**Printing Function**/
 int print_char(char c);
